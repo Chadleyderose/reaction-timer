@@ -1,11 +1,27 @@
 <template>
-<h1>reaction timer</h1>
+<h1>Speedy Reaction Timer</h1>
+<button @click="start" :disabled="isPlaying">Play</button>
+<block v-if="isPlaying" :delay="delay"/>
 </template>
 
 <script>
+import block from './components/block.vue'
 export default {
   name: 'App',
-  components: {}
+  components: {block},
+  data(){
+    return{
+      isPlaying: false,
+      delay:null
+    }
+  },
+  methods:{
+    start(){
+      this.delay = 2000 + Math.random() * 5000
+      this.isPlaying =true
+      console.log(this.delay)
+    }
+  }
 }
 </script>
 
